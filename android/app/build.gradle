@@ -25,6 +25,7 @@ apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'xl-channel'
 android {
     compileSdkVersion 30
 
@@ -38,10 +39,30 @@ android {
         multiDexEnabled true
     }
 
+    signingConfigs {
+        release {
+            storeFile file('/Users/wyl/Documents/android.keystore')
+            storePassword '1234567890'
+            keyAlias 'android.keystore'
+            keyPassword '1234567890'
+        }
+        debug{
+            storeFile file('/Users/wyl/Documents/android.keystore')
+            storePassword '1234567890'
+            keyAlias 'android.keystore'
+            keyPassword '1234567890'
+        }
+    }
+
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        profile {
             signingConfig signingConfigs.debug
         }
     }
@@ -50,6 +71,10 @@ android {
 flutter {
     source '../..'
 }
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
 
 dependencies {
     implementation 'com.android.support:multidex:1.0.3'
@@ -57,3 +82,20 @@ dependencies {
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
 }
+walle {
+    // 指定渠道包的输出路径
+    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
+    // 定制渠道包的APK的文件名称
+    apkFileNameFormat = '${appName}-${abiName}-${channel}-${buildType}-v${versionName}-${buildTime}.apk'
+    // 渠道配置文件
+    channelFile = new File("${project.getProjectDir()}/channel")
+//  需要替换成自己路径下的jar
+    jiaguPath = "/Users/wyl/Downloads/360jiagubao_mac/jiagu/jiagu.jar"
+
+    jiaguUser = "18222240810"
+
+    jiaguPwd = "xiaolei521"
+
+    isFlutter = true
+}
+

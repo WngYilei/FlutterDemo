@@ -38,10 +38,7 @@ class _RecommendPageState extends State<RecommendPage>
         onRefresh: _refresh,
         child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
-            final int crossAxisCount = max(
-                constraints.maxWidth ~/
-                    (MediaQuery.of(context).size.width / 2.0),
-                2);
+            final int crossAxisCount = max(constraints.maxWidth ~/ (MediaQuery.of(context).size.width / 2.0), 2);
             return LoadingMoreList<RecommendItem>(ListConfig(
               // 扩展 WaterfallFlow(瀑布流) 等列表--默认flutter没有实现瀑布流
               extendedListDelegate:

@@ -118,9 +118,7 @@ class ListItemWidget extends StatelessWidget {
       //抗锯齿
       clipBehavior: Clip.antiAlias,
       child: cacheImage(
-          item.data.author == null
-              ? item.data.provider.icon
-              : item.data.author.icon,
+          item.data.author == null ? item.data.provider.icon : item.data.author.icon,
           width: 40,
           height: 40),
     );

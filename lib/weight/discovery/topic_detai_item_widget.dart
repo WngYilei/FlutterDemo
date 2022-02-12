@@ -92,8 +92,7 @@ class TopicDetailItemWidget extends StatelessWidget {
   }
 
   Widget _description() {
-    var textStyle = const TextStyle(
-        fontSize: 12, color: Colors.blue, fontWeight: FontWeight.bold);
+    var textStyle = const TextStyle(fontSize: 12, color: Colors.blue, fontWeight: FontWeight.bold);
     return Padding(
       padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
       child: ExpandMoreTextWidget(

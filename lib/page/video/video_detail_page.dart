@@ -94,8 +94,7 @@ class _VideoDetailPageState extends State<VideoDetailPage>
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: cachedNetworkImageProvider(
-                              '${data.cover.blurred}}/thumbnail/${MediaQuery.of(context).size.height}x${MediaQuery.of(context).size.width}'))),
+                          image: cachedNetworkImageProvider('${data.cover.blurred}}/thumbnail/${MediaQuery.of(context).size.height}x${MediaQuery.of(context).size.width}'))),
                   child: CustomScrollView(
                     slivers: [
                       _sliverToBoxAdapter(),

@@ -64,11 +64,11 @@ class _HotPageState extends State<HotPage>
                 return Tab(text: tabInfoItem.name);
               }).toList(),
               onTap: (index) {
-                _pageController.animateToPage(
-                    index, duration: kTabScrollDuration, curve: Curves.ease);
-              }
-          ),
-          Expanded(child: PageView(
+                _pageController.animateToPage(index,
+                    duration: kTabScrollDuration, curve: Curves.ease);
+              }),
+          Expanded(
+              child: PageView(
             controller: _pageController,
             onPageChanged: (index) {
               _tabController.index = index;
@@ -77,7 +77,6 @@ class _HotPageState extends State<HotPage>
               return HotListPage(apiUrl: tabInfoItem.apiUrl);
             }).toList(),
           ))
-
         ],
       ),
     );
